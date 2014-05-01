@@ -6,7 +6,7 @@ var express = require('express'),
 	methodOverride = require('method-override'),
 	Message = require('./models/messages.js'),
 	app = express(),
-	port = 60000,
+	port = 60001,
 	db;
 
 //Middleware: Allow cross-domain requests (CORS)
