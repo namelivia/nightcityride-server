@@ -1,1 +1,94 @@
-/*incomplete*/
+body{
+	color:white;
+	font-family:"Helvetica",sans-serif;
+}
+a{
+	text-decoration:none;
+	color:inherit;
+}
+video#bgvid { 
+	position: fixed; right: 0; bottom: 0;
+	min-width: 100%; min-height: 100%;
+	width: auto; height: auto; z-index: -100;
+	background: url(polina.jpg) no-repeat;
+	background-size: cover; 
+}
+video#fgvid { 
+	max-width: 100%; min-height: 100%;
+}
+#left{
+	background-color:rgba(0,0,0,0.8);
+	color:white;
+	width:45%;
+	padding:10px;
+	top:0;
+	left:0;
+	margin:10px;
+	position:absolute;
+	border:solid 1px white;
+	height:auto;
+	text-align:justify;
+}
+#right{
+	background-color:rgba(0,0,0,0.8);
+	color:white;
+	width:45%;
+	padding:10px;
+	margin:10px;
+	top:0;
+	height:auto;
+	position:absolute;
+	border:solid 1px white;
+	right:0;
+	text-align:justify;
+}
+.codelink{
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffe3ff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffe3ff;
+	box-shadow:inset 0px 1px 0px 0px #ffe3ff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fa08fa), color-stop(1, #6a2787) );
+	background:-moz-linear-gradient( center top, #fa08fa 5%, #6a2787 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fa08fa', endColorstr='#6a2787');
+	background-color:#fa08fa;
+	-webkit-border-top-left-radius:6px;
+	-moz-border-radius-topleft:6px;
+	border-top-left-radius:6px;
+	-webkit-border-top-right-radius:6px;
+	-moz-border-radius-topright:6px;
+	border-top-right-radius:6px;
+	-webkit-border-bottom-right-radius:6px;
+	-moz-border-radius-bottomright:6px;
+	border-bottom-right-radius:6px;
+	-webkit-border-bottom-left-radius:6px;
+	-moz-border-radius-bottomleft:6px;
+	border-bottom-left-radius:6px;
+	text-indent:0;
+	border:1px solid #5e055e;
+	display:inline-block;
+	color:#ffffff;
+	height:50px;
+	line-height:50px;
+	width:100%;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #731773;
+}
+.codelink:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #6a2787), color-stop(1, #fa08fa) );
+	background:-moz-linear-gradient( center top, #6a2787 5%, #fa08fa 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6a2787', endColorstr='#fa08fa');
+	background-color:#6a2787;
+}.codelink:active {
+	position:relative;
+	top:1px;
+}
+@media (max-width: 700px) {
+	#left{
+		position:initial;
+		width:90%;
+	}
+	#right{
+		position:initial;
+		width:90%;
+	}
+}
