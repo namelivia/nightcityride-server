@@ -1,5 +1,5 @@
 var express = require('express'),
-    util = require('util'),
+	util = require('util'),
 	twitter = require ('twitter'),
 	mongoose = require('mongoose'),
 	bodyParser = require('body-parser'),
@@ -14,7 +14,7 @@ var allowCrossDomain = function(req, res, next) {
 	res.header('Access-Control-Allow-Origin', '*');
 	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
 	res.header('Access-Control-Allow-Headers', 'Content-Type');
-	 
+
 	next();
 }
 
@@ -27,7 +27,7 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', "jade");
 app.engine('jade', require('jade').__express);
 app.get("/", function(req, res){
-    res.render("page");
+	res.render("page");
 });
 
 routes = require('./routes/messages')(app);
@@ -40,15 +40,15 @@ mongoose.connect('mongodb://localhost/messages', function(err, res) {
 });
 
 var twit = new twitter({
-  consumer_key: '9QoU3iDvuqDXH53aj8pTgeft3',
-  consumer_secret: 'JgGJGYwMw3zK9uEPxwb8ri4F1lQLvpoGwTQ4K5DegqYoGg7zoV',
-  access_token_key: '204869812-1ezsldbngmfUcF2ffD6jLNsHCD5yLBGq8xuPCWPq',
-  access_token_secret: 'xVzWvNd2cL6yv6JOBgLZQgozdOVQ2KBXKWTSnmLybIGJY' 
+	consumer_key: '9QoU3iDvuqDXH53aj8pTgeft3',
+	consumer_secret: 'JgGJGYwMw3zK9uEPxwb8ri4F1lQLvpoGwTQ4K5DegqYoGg7zoV',
+	access_token_key: '204869812-1ezsldbngmfUcF2ffD6jLNsHCD5yLBGq8xuPCWPq',
+	access_token_secret: 'xVzWvNd2cL6yv6JOBgLZQgozdOVQ2KBXKWTSnmLybIGJY' 
 });
 
 //Ve recogiendo los tweets
 twit.stream('statuses/filter', {track:'#nightcityride'}, function(stream) {
-    stream.on('data', function(data) {
+	stream.on('data', function(data) {
 		console.log(util.inspect(data.text));
 		var message = new Message({
 			content: util.inspect(data.text),

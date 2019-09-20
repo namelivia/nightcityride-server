@@ -1,15 +1,15 @@
 {
-    "name": "FlappySonic",
-    "version": "0.0.0",
-    "description": "Flappy Bird like game featuring Sonic The Hedgehog",
+    "name": "night_city_ride_server",
+    "version": "0.0.1",
+    "description": "Server side of my personal entry for #ProgramaLaPlaza 2013 contest.",
+    "author": "José Ignacio Amelivia Santiago <jignacio.amelivia@gmail.com> (https://namelivia.com)",
     "dependencies": {
-	"socket.io": "latest",
+        "socket.io": "latest",
         "express": "latest",
         "mongoose": "latest",
         "twitter": "latest",
         "body-parser": "latest",
         "method-override": "latest",
         "jade": "latest"
-    },
-    "author": "namelivia"
+    }
 }
