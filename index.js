@@ -5,6 +5,7 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
 	methodOverride = require('method-override'),
 	Message = require('./models/messages.js'),
+	Config = require('./config.js'),
 	app = express(),
 	port = 60001,
 	db;
@@ -18,54 +19,56 @@ var allowCrossDomain = function(req, res, next) {
 	next();
 }
 
-app.use(bodyParser());
+app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(allowCrossDomain);
 
 app.set('views', __dirname + '/tpl');
 app.use(express.static(__dirname + '/public'));
-app.set('view engine', "jade");
-app.engine('jade', require('jade').__express);
-app.get("/", function(req, res){
-	res.render("page");
+app.set('view engine', 'pug');
+app.engine('pug', require('pug').__express);
+app.get('/', function(req, res){
+	res.render('page');
 });
 
 routes = require('./routes/messages')(app);
-mongoose.connect('mongodb://localhost/messages', function(err, res) {
-	if(err) {
-		console.log('ERROR: connecting to Database. ' + err);
-	} else {
-		console.log('Connected to Database');
-	}
-});
 
 var twit = new twitter({
-	consumer_key: '9QoU3iDvuqDXH53aj8pTgeft3',
-	consumer_secret: 'JgGJGYwMw3zK9uEPxwb8ri4F1lQLvpoGwTQ4K5DegqYoGg7zoV',
-	access_token_key: '204869812-1ezsldbngmfUcF2ffD6jLNsHCD5yLBGq8xuPCWPq',
-	access_token_secret: 'xVzWvNd2cL6yv6JOBgLZQgozdOVQ2KBXKWTSnmLybIGJY' 
+	consumer_key: Config.consumer_key,
+	consumer_secret: Config.consumer_secret,
+	access_token_key: Config.access_token_key,
+	access_token_secret: Config.access_token_secret
 });
 
-//Ve recogiendo los tweets
-twit.stream('statuses/filter', {track:'#nightcityride'}, function(stream) {
-	stream.on('data', function(data) {
-		console.log(util.inspect(data.text));
-		var message = new Message({
-			content: util.inspect(data.text),
+mongoose.connect(Config.database_url, { useNewUrlParser: true, useUnifiedTopology: true }).then(
+	() => {
+		console.log('Connected to Database');
+
+		twit.stream('statuses/filter', {track:'#nightcityride'}, function(stream) {
+			stream.on('data', function(data) {
+				console.log(util.inspect(data.text));
+				var message = new Message({
+					content: util.inspect(data.text),
+				});
+
+				message.save(function(err) {
+					if(!err) {
+						console.log('Created');
+						Message.newMessages = true;
+					} else {
+						console.log('ERROR: ' + err);
+					}
+				});
+			});
 		});
 
-		message.save(function(err) {
-			if(!err) {
-				console.log('Created');
-				Message.newMessages = true;
-			} else {
-				console.log('ERROR: ' + err);
-			}
+		app.listen(port, function(){
+			console.log('Noder server running on port '+port);
 		});
-	});
-});
+	},
+	err => {
+		console.log('ERROR: connecting to Database. ' + err);
+		process.exit();
+	}
+);
 
-
-app.listen(port, function(){
-	console.log("Noder server running on port "+port);
-});

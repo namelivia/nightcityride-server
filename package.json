@@ -4,12 +4,12 @@
     "description": "Server side of my personal entry for #ProgramaLaPlaza 2014 contest.",
     "author": "José Ignacio Amelivia Santiago <jignacio.amelivia@gmail.com> (https://namelivia.com)",
     "dependencies": {
-        "socket.io": "latest",
-        "express": "latest",
-        "mongoose": "latest",
-        "twitter": "latest",
-        "body-parser": "latest",
-        "method-override": "latest",
-        "jade": "latest"
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
+        "method-override": "^3.0.0",
+        "mongoose": "^5.7.1",
+        "pug": "^2.0.4",
+        "socket.io": "^2.3.0",
+        "twitter": "^1.7.1"
     }
 }
