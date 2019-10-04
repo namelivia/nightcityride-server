@@ -68,7 +68,6 @@ mongoose.connect(Config.database_url, { useNewUrlParser: true, useUnifiedTopolog
 	},
 	err => {
 		console.log('ERROR: connecting to Database. ' + err);
-		process.exit();
 	}
 );
 
