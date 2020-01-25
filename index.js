@@ -7,7 +7,7 @@ var express = require('express'),
 	Message = require('./models/messages.js'),
 	Config = require('./config.js'),
 	app = express(),
-	port = 60001,
+	port = 60000,
 	db;
 
 //Middleware: Allow cross-domain requests (CORS)
