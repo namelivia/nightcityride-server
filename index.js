@@ -5,7 +5,6 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
 	methodOverride = require('method-override'),
 	Message = require('./models/messages.js'),
-	Config = require('./config.js'),
 	app = express(),
 	port = 60000,
 	db;
