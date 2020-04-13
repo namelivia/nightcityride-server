@@ -1,6 +1,6 @@
 {
     "name": "night_city_ride_server",
-    "version": "0.0.1",
+    "version": "0.0.7",
     "description": "Server side of my personal entry for #ProgramaLaPlaza 2014 contest.",
     "author": "José Ignacio Amelivia Santiago <jignacio.amelivia@gmail.com> (https://namelivia.com)",
     "dependencies": {
