@@ -4,7 +4,7 @@
     "description": "Server side of my personal entry for #ProgramaLaPlaza 2014 contest.",
     "author": "José Ignacio Amelivia Santiago <jignacio.amelivia@gmail.com> (https://namelivia.com)",
     "dependencies": {
-        "body-parser": "^1.20.0",
+        "body-parser": "^1.20.1",
         "express": "^4.18.1",
         "method-override": "^3.0.0",
         "mongoose": "^6.6.5",
